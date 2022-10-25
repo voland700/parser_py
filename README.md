@@ -1,7 +1,5 @@
-### Blog + AdvinLTE
+### parser for vezuviy.su
 ```
-git clone
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate
+ pip install beautifulsoup4
+ pip install openpyxl
+ pip install fake-useragent
