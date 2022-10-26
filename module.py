@@ -7,8 +7,12 @@ import pathlib
 import string
 import random
 import json
+import re
 
 import openpyxl
+
+
+
 
 
 class DataPage:
@@ -352,3 +356,19 @@ def detNameExcelFile():
         os.mkdir("upload")
     return 'upload/'+str(max_namber)+'_resault.xlsx'
 
+
+# проверяем ссылку на соответствие домену
+def isLinkCorrect(url):
+    domain = r'https://vezuviy.su/|https://everest-pech.com/|https://etna-pech.ru/'
+    if re.match(domain, url, re.IGNORECASE):
+        return True
+    else:
+        return False
+
+# проверяем ссылку на соответствие URL
+def isLink(url):
+    url_pattern = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
+    if re.match(url_pattern, url):
+        return True
+    else:
+        return False
