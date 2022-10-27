@@ -66,9 +66,11 @@ class DataPage:
         req = urllib.request.urlopen(req)
         html = req.read()
         soup = BeautifulSoup(html, 'html.parser')
-
-
-        propsBody = soup.find('div', {'id' : 'content_features'}).findAll('div', class_='ty-product-feature')
+        propsBody = []
+        try:
+            propsBody = soup.find('div', {'id' : 'content_features'}).findAll('div', class_='ty-product-feature')
+        except:
+            pass
         if len(propsBody) > 0:
             #self.properties.clear()
             propsItems = []
