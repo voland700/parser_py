@@ -34,12 +34,6 @@ descrip = str(soup.select('#content_description')[0].div.decode_contents())
 print(descrip)
 """
 
-def isLinkCorrect(url):
-    domain = r'https://vezuviy.su/|https://everest-pech.com/|https://etna-pech.ru/'
-    if re.match(domain, url, re.IGNORECASE):
-        return True
-    else:
-        return False
 
 def isLink(url):
     url_pattern = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
@@ -48,4 +42,4 @@ def isLink(url):
     else:
         return False
 
-print(isLink('gdrgrg//http'))
+print(isLink(vez))

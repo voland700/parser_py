@@ -329,21 +329,6 @@ class ExcelFile:
 
         return file_name
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # получаем орегинальное имя Excel - файла
 def detNameExcelFile():
     max_namber = 1

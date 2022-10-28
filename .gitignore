@@ -1,4 +1,4 @@
 # created by virtualenv automatically
-/upload
+/upload/*
 /__pycache__
 .idea
