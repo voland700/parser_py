@@ -96,6 +96,7 @@ def startPars():
 
     # Валидация пройдена, старт персинга
     lb1_label_info_1['text'] = 'Старт парсинга...'
+    root.update()
 
     # 1.1 Получаем ссылки на товары указанной категории
     a = DataGetLinks(link)
@@ -106,6 +107,7 @@ def startPars():
         resault = []
         productCount = 0
         lb1_label_info_1['text'] = f'Получены ссылоки на товары: {len(listLinks)}.'
+        root.update()
         for itemUrl in listLinks:
             page = DataPage(itemUrl)
             item = page.get()
@@ -116,18 +118,22 @@ def startPars():
 
         if len(resault) > 0:
             lb1_label_info_2['text'] = 'Полученны данные товаров: ' + str(productCount)
+            root.update()
             # 1.3 Запись полученных данных в excel файл
             line = ExcelFile(resault)
             res = line.get()
             if res:
                 lb1_label_info_3['text']='Создан файл: ' + res
+                root.update()
                 return # Парсинг завершен
         else:
             lb1_label_info_3['text'] = f"Данные товаров не получены"
             lb1_label_info_3['foreground']='#db0303'
+            root.update()
             return
     else:
         lb1_valid['text'] = 'Не получены ссылки на товары'
+        root.update()
         return
 
 
@@ -164,6 +170,7 @@ def startParsByLinks():
         else: answer_1 = f'Получено: {len(listLinks)} ссылок для парсинга. В списке ссылок {notDomens} - не соответсвуют доменам Везувий'
         lb2_valid['text'] = answer_1
         lb2_valid['fg'] = '#000000'
+        root.update()
 
         for itemUrl in listLinks:
             page = DataPage(itemUrl)
@@ -179,12 +186,14 @@ def startParsByLinks():
             if productCount > 0 and res:
                 lb1_label_info_2['text'] = f"Получен данные товаров: {productCount}, создан файл {res}"
                 lb1_label_info_2['fg'] = '#000000'
+                root.update()
             else:
                 lb1_label_info_2['text'] = 'Данные товаров не получены'
                 lb1_label_info_2['fg'] = '#db0303'
     else:
         lb2_valid['text'] = 'Нет ссылок для парсинга'
         lb2_valid['fg'] = '#db0303'
+        root.update()
         return
 
 #  --- GUI TKINTER
